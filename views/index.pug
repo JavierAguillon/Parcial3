@@ -7,7 +7,7 @@ block content
       img(src="../images/documentos-grande.webp" class="mx-auto mb-3")
       h1.text-center.pt-2 Documento
       form
-        .form-group
+        .form-group(action='/registro' method='POST')
           label(for="nombre") Nombre de documento: 
           <br>
           input(type="text" id="nombre" class="form-control" name="nombre" placeholder="Nombre Documento")
