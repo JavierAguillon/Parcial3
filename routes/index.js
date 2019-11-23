@@ -6,22 +6,21 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/reservaciones/nueva-reservacion',async (req,res)=>{
-  const {firstname , lastname, phone, email, arrive_date, departure_date, room, package} = req.body;
+router.post('/registro',async (req,res)=>{
+  const {nombre , tipo, tamaño, ubicacion} = req.body;
   const errors = [];
-  const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  const phoneRegexp = /^\d{8}-\d{1}$/;
-  if(phoneRegexp.test(phone) != true){
-      errors.push({text: "Nùmero de telefono incorrecto."})
+
+  if(nombre.length < 0 ){
+      errors.push({text: "Nombre demasiado corto"})
   }
-  if(emailRegexp.test(email)!= true){
-      errors.push({text: "Correo electronico incorrecto."})
+  if(tipo != true){
+      errors.push({text: "No se ha escrito un tipo de documento."})
   }
-  if(departure_date <= arrive_date){
-      errors.push({text: 'La fecha de salida no puede ser menor o igual a la fecha de llegada.'})
+  if(tamaño > 0){
+      errors.push({text: 'Su documento no tiene tamaño.'})
   }
   if(errors.length > 0){
-      res.render('add_reservation', {errors, phone, email, arrive_date,
+      res.render('add_registro', {errors, phone, email, arrive_date,
            departure_date, room, package})
   }else{
       const newReservation = new Reservation({firstname, lastname, phone, email,
