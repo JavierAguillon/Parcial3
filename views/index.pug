@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .container-fluid
+    .row.justify-content-center
+      .col-sm-12.col-md-8.col-xl-4
+        .form-container
+        img(src="../images/documentos-grande.webp" class="mx-auto mb-3")
+        h1.text-center.pt-2 Documento
+          .form.group
+            label(for="nombre") Nombre de documento
+            input(type="text" id="nombre" class="form-control" name="nombre" placeholder="Nombre Documento")
+          .form.group
+            label(for="tipo") Tipo de documento
+            input(type="text" id="tipo" class="form-control" name="tipo" placeholder="(PDF, excel, word)")
+          .form.group
+            label(for="tamaño") Tamaño de documento
+            input(type="number" id="tamaño" class="form-control" name="tamaño" placeholder="KB")
+          .form.group
+            label(for="ubicacion") Udicacion de documento
+            input(type="text" id="ubicacion" class="form-control" name="ubicacion" placeholder="/home/documentos/file.doc")
+          .form-group
+            button(type: "submit" class="btn btn-primary btn-block") Registrar Documento
+          .form-group
+            button(type: "submit" class="btn btn-primary btn-block") Lista de Documentos   
