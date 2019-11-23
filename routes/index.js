@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/registro',async (req,res)=>{
+router.post('/',async (req,res)=>{
   const {nombre , tipo, tamaño, ubicacion} = req.body;
   const errors = [];
 
